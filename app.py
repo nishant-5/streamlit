@@ -30,6 +30,8 @@ if st.button("Generate Answer"):
         tokenizer.padding_side = "left"
         tokenizer.pad_token=tokenizer.eos_token
         inputs = tokenizer.encode(email_content, return_tensors="pt", max_length=512, truncation=True)
+        print("Email content-",email_content)
+        print("Inputs-",inputs)
         outputs = model.generate(inputs, max_length=100, num_beams=5, early_stopping=True)
         subject_line = tokenizer.decode(outputs[0], skip_special_tokens=True)
         #subject_line = tokenizer.decode(skip_special_tokens=True)
