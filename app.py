@@ -5,15 +5,6 @@ from transformers import BartTokenizer, BartForConditionalGeneration
 from transformers import GPT2Tokenizer, GPT2LMHeadModel, TextDataset, DataCollatorForLanguageModeling
 from transformers import GPT2Model, GPT2Config, AutoModelForCausalLM
 
-# Load the model and tokenizer from Hugging Face
-def load_model():
-    model = AutoModelForCausalLM.from_pretrained("Nishantc05/qa-gptmodel")
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    model.to(device)
-    tokenizer = GPT2Tokenizer.from_pretrained("Nishantc05/qa-gptmodel", bos_token='<|startoftext|>', eos_token='<|endoftext|>', pad_token='<|pad|>')
-    tokenizer.padding_side = "left"
-    tokenizer.pad_token=tokenizer.eos_token
-    return tokenizer, model
 
 st.title("Question Answer Generator")
 
